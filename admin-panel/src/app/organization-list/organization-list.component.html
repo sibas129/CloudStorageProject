@@ -1,0 +1,24 @@
+<h2>Список организаций</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>Имя организцаии</th>
+      <th>Дата создания</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let org of organizations">
+      <td>{{ org.id }}</td>
+      <td>{{ org.user_id }}</td>
+      <td>{{ org.name }}</td>
+      <td>{{ org.created_at | date}}</td>
+      <td>
+        <button class="button" (click)="viewDetails(org)">Детали</button>
+        <button class="button" (click)="deleteOrg(org)">Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

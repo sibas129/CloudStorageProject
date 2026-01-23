@@ -1,0 +1,37 @@
+<!-- folder.component.html -->
+
+<div class="folder">
+  <div class="folder-header" (click)="toggle()">
+    <span class="folder-toggle">
+      {{ isExpanded ? '📂' : '📁' }}
+    </span>
+    <span *ngIf="folder.root " class="item-name">Дерево папок</span>
+    <ng-container *ngIf="!folder.root">
+      <span class="item-name">{{folder.name}}</span>
+      <button class="delete-folder" (click)="folderDeleted.emit(folder.id); $event.stopPropagation()">Удалить</button>
+    </ng-container>
+  </div>
+  <div
+    class="folder-content"
+    [@slideToggle]="isExpanded ? 'expanded' : 'collapsed'"
+  >
+    <ul class="items">
+      <li
+        *ngFor="let file of folder.files"
+        class="item-row"
+        [ngClass]="{ 'even-row': evenRow(file.id) }"
+      >
+        <span class="item-name">{{ file.name }}</span>
+        <button class="delete-file" (click)="fileDeleted.emit(file.id)">Удалить</button>
+      </li>
+    </ul>
+    <div class="subfolders">
+      <app-folder
+        *ngFor="let folder of folder.folders"
+        [folder]="folder"
+        (fileDeleted)="fileDeleted.emit($event)"
+        (folderDeleted)="folderDeleted.emit($event)"
+      ></app-folder>
+    </div>
+  </div>
+</div>

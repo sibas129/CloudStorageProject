@@ -1,0 +1,10 @@
+<div class="navbar">
+  <div class="title">Панель администратора, {{currentAdmin}}</div>
+  <a routerLink="/admin/users">Пользователи</a>
+  <a routerLink="/admin/organization">Организации</a>
+  <a routerLink="/admin/admins">Администраторы</a>
+  <a (click)="logout()">Выйти</a>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

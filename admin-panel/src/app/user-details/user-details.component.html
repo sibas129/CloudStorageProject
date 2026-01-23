@@ -1,0 +1,18 @@
+<button class="back-button" (click)="goBack()">Назад</button>
+
+<h2>Детали пользователя</h2>
+<div *ngIf="user">
+  <p><strong>Telegram ID:</strong> {{ user.telegram_id }}</p>
+  <p><strong>Telegram Name:</strong> {{ user.telegram_name }}</p>
+  <p><strong>Дата создания:</strong> {{ user.created_at }}</p>
+  <p><strong>Дата обновления:</strong> {{ user.updated_at }}</p>
+  <p><strong>Размер хранилища:</strong> {{ user.size }}</p>
+  <div class="folder-tree">
+    <app-folder
+      *ngFor="let folder of user.folder"
+      [folder]="folder"
+      (fileDeleted)="onFileDeleted($event)"
+      (folderDeleted)="onFolderDeleted($event)"
+    ></app-folder>
+  </div>
+</div>

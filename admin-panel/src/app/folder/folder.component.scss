@@ -1,0 +1,90 @@
+.folder {
+  .folder-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid rgb(169, 169, 169);
+
+    .folder-toggle {
+      margin-right: 5px;
+    }
+
+    .item-name {
+      flex: 1;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 1px 4px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      margin: 6px 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    
+  }
+
+  .folder-content {
+    overflow: hidden;
+
+    .items {
+      list-style-type: none;
+      padding-left: 20px;
+      margin: 0;
+
+      .item-row {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+
+        &.even-row {
+          background-color: #f9f9f9;
+        }
+
+        .item-name {
+          flex: 1;
+        }
+
+        button {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .subfolders {
+      margin-left: 20px;
+    }
+  }
+
+  .delete-folder {
+    padding: 110px 110px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  
+  .delete-folder:hover {
+    background-color: #0056b3;
+  }
+
+  .delete-file {
+    padding: 2px 4px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  
+  .delete-file:hover {
+    background-color: #0056b3;
+  }
+
+}

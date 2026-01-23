@@ -1,0 +1,40 @@
+<button class="back-button" (click)="goBack()">Назад</button>
+
+<h2>Детали организации</h2>
+<div *ngIf="org">
+  <p><strong>ID:</strong> {{ org.id }}</p>
+  <p><strong>Наименование организации:</strong> {{ org.name }}</p>
+  <p><strong>Дата создания:</strong> {{ org.created_at }}</p>
+  <p><strong>Размер хранилища:</strong> {{ org.size }}</p>
+  <button class="back-button" (click)="togglePopup()">Просмотр участников</button>
+  <div class="folder-tree">
+    <app-folder
+      *ngFor="let folder of org.folder"
+      [folder]="folder"
+      (fileDeleted)="onFileDeleted($event)"
+      (folderDeleted)="onFolderDeleted($event)"
+    ></app-folder>
+  </div>
+  <div class="popup" *ngIf="isPopupVisible">
+    <div class="popup-content">
+        <h2>Список пользователей</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Telegram ID</th>
+              <th>Telegram Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of org.users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.telegram_id }}</td>
+              <td>{{ user.telegram_name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      <button class="close-button" (click)="togglePopup()">Закрыть</button>
+    </div>
+  </div>
+</div>

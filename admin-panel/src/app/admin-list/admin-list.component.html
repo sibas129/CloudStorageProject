@@ -1,0 +1,32 @@
+<h2>Список администраторов</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Логин</th>
+      <th>Действия</th>   
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let admin of admins">
+      <td>{{ admin.username }}</td>
+      <td>
+        <ng-container *ngIf="!admin.is_superadmin">
+          <button class="button" [disabled]="!isSuperAdmin" (click)="deleteAdmin(admin)">Удалить</button>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Добавить администратора</h3>
+<form [formGroup]="adminForm" (ngSubmit)="addAdmin()">
+  <div class="form-group">
+    <label for="username">Логин</label>
+    <input id="username" formControlName="username" />
+  </div>
+  <div class="form-group">
+    <label for="password">Пароль</label>
+    <input id="password" type="password" formControlName="password" />
+  </div>
+  <button  type="submit" [disabled]="!isSuperAdmin || adminForm.invalid">Добавить</button>
+</form>

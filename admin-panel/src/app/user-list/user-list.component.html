@@ -1,0 +1,25 @@
+<h2>Список пользователей</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Telegram ID</th>
+      <th>Telegram Name</th>
+      <th>Дата создания</th>
+      <th>Дата обновления</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.telegram_id }}</td>
+      <td>{{ user.telegram_name }}</td>
+      <td>{{ user.created_at | date}} </td>
+      <td>{{ user.updated_at | date}}</td>
+      <td>
+        <button class="button" (click)="viewDetails(user)">Детали</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
